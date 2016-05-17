@@ -18,7 +18,8 @@ public class empleadoBean extends personaBean{
     private int numeroTelefono;
     private String fechaInicioContrato; 
 
-    public empleadoBean(){}
+    public empleadoBean(){
+    }
     
         public empleadoBean(int codEmpleado, String nombres, String apellidos, int idTipoDucomento, String numeroIdentificacion, String password, int estado, String ultimaActualizacion, int codigoTaller, int numeroTelefono, String fechaInicioContrato) {
         super(nombres, apellidos, idTipoDucomento, numeroIdentificacion, password);

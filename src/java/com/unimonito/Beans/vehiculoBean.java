@@ -5,26 +5,33 @@ package com.unimonito.Beans;
  * @author DAVID
  */
 public class vehiculoBean {
+
     private int idvehiculos;
     private String matricula;
     private String fechadeCompra;
     private int numeroPod;
     private int idTipo;
     private String tipoVehiculo;
-    private int idCliente;
-    
-    public vehiculoBean(){
+    private String numeroDocumento;
 
-}
+    public vehiculoBean() {
 
-    public vehiculoBean(int idvehiculos, String matricula, String fechadeCompra, int numeroPod, int idTipo, String tipoVehiculo, int idCliente) {
+    }
+
+    public vehiculoBean(int idvehiculos, String numeroDocumento) {
+        
+        this.idvehiculos = idvehiculos;
+        this.numeroDocumento = numeroDocumento;
+    }
+
+    public vehiculoBean(int idvehiculos, String matricula, String fechadeCompra, int numeroPod, int idTipo) {
         this.idvehiculos = idvehiculos;
         this.matricula = matricula;
         this.fechadeCompra = fechadeCompra;
         this.numeroPod = numeroPod;
         this.idTipo = idTipo;
-        this.tipoVehiculo = tipoVehiculo;
-        this.idCliente = idCliente;
+        
+
     }
 
     /**
@@ -112,17 +119,17 @@ public class vehiculoBean {
     }
 
     /**
-     * @return the idCliente
+     * @return the numeroDocumento
      */
-    public int getIdCliente() {
-        return idCliente;
+    public String getNumeroDocumento() {
+        return numeroDocumento;
     }
 
     /**
-     * @param idCliente the idCliente to set
+     * @param numeroDocumento the numeroDocumento to set
      */
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
     }
-    
+
 }

@@ -70,7 +70,7 @@
         <fieldset> 
             <legend> Datos empleados</legend>
 
-            <form class="form-horizontal" role="form" method="post" action="../crearEmpleadosServlet">
+            <form class="form-horizontal" role="form" method="post" action="../crearVehiculoServlet">
                 <div class="row">
                    <div class="col-md-4">
                         <div class="form-group">
@@ -91,17 +91,7 @@
                             </div>
                         </div>
                     </div> 
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="id_Tipo" class="col-lg-5 control-label">Tipo de vehiculo</label>
-                            <div class="col-lg-7">
-                                <select class="form-control" name="idTipo">
-                                    <option value="2">Todo terreno</option>
-                                    <option value="3">utilitario</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div> 
+                    
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="numero_Pod" class="col-lg-5 control-label">numero puertas</label>
@@ -116,7 +106,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <!--<div class="col-md-4">
                         <div class="form-group">
                             <label for="numero_Pod" class="col-lg-5 control-label">numero defensas</label>
                             <div class="col-lg-7">
@@ -130,8 +120,19 @@
                             </div>
                         </div>
                     </div> 
-                    
+                    -->
                     <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="id_Tipo" class="col-lg-5 control-label">Tipo de vehiculo</label>
+                            <div class="col-lg-7">
+                                <select class="form-control" name="idTipo">
+                                    <option value="1">Todo terreno</option>
+                                    <option value="2">utilitario</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div> 
+                    <!--<div class="col-md-4">
                         <div class="form-group">
                             <label for="numero_Documento" class="col-lg-5 control-label">numero cedula del propietario</label>
                             <div class="col-lg-7">
@@ -139,7 +140,7 @@
                                        placeholder="1231231231" name="numeroDocumento">
                             </div>
                         </div>
-                    </div> 
+                    </div> -->
                     <div class="form-group">
                         <div class="col-lg-offset-2 col-lg-10">
                             <button type="submit" class="btn btn-default" id="aceptar">Aceptar</button>

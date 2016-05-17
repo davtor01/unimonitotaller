@@ -20,58 +20,83 @@ import java.util.logging.Logger;
  *
  * @author DAVID
  */
-public class clienteDAO extends IDAO{
-     private Connection conn = null;
+public class clienteDAO extends IDAO {
 
-  public clienteDAO() throws SQLException {
-    this.conn = conexionBD.obtenerConexion();
-  }
-public boolean guardar(clienteBean cliente) {
-    String qCliente = "INSERT INTO clientes(idCliente, nombres, apellidos, idTipoDocumento, numeroDocumento, password, ciudadResidencia, ultimaActualizacion) VALUES (null,?,?,?,?,?,?,?)";
-    Statement ps = null;
-    try {
-      PreparedStatement pstmt = conn.prepareStatement(qCliente);
-    //  pstmt.setInt(1, cliente.getIdCliente());
-      pstmt.setString(1, cliente.getNombres());
-      pstmt.setString(2, cliente.getApellidos());
-      pstmt.setInt(3, cliente.getIdTipoDucomento());
-      pstmt.setString(4, cliente.getNumeroIdentificacion());
-      pstmt.setString(5, cliente.getPassword());
-      pstmt.setString(6, cliente.getCiudadResidencia());
-      pstmt.setString(7, cliente.getUltimaActualizacion());
-         
-      pstmt.executeUpdate();
-      
-    } catch (SQLException e) {      
-      System.out.println(e.getMessage());
-    } finally {
+    private Connection conn = null;
+
+    public clienteDAO() throws SQLException {
+        this.conn = conexionBD.obtenerConexion();
     }
-    return true;
-  }
- 
 
-  public ArrayList<clienteBean> getCliente() {
-    ArrayList<clienteBean> clientes = new ArrayList<clienteBean>();
-    String qQuery = "SELECT * FROM cliente ";
-    try {
-      PreparedStatement pstmt = conn.prepareStatement(qQuery);
-      ResultSet rs = pstmt.executeQuery();
-      while (rs.next()) {
+    public boolean guardar(clienteBean cliente) {
+        String qCliente = "INSERT INTO clientes(idCliente, nombres, apellidos, idTipoDocumento, numeroDocumento, password, ciudadResidencia, ultimaActualizacion) VALUES (null,?,?,?,?,?,?,?)";
+        Statement ps = null;
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(qCliente);
+            //  pstmt.setInt(1, cliente.getIdCliente());
+            pstmt.setString(1, cliente.getNombres());
+            pstmt.setString(2, cliente.getApellidos());
+            pstmt.setInt(3, cliente.getIdTipoDucomento());
+            pstmt.setString(4, cliente.getNumeroIdentificacion());
+            pstmt.setString(5, cliente.getPassword());
+            pstmt.setString(6, cliente.getCiudadResidencia());
+            pstmt.setString(7, cliente.getUltimaActualizacion());
+
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+        }
+        return true;
+    }
+
+    public ArrayList<clienteBean> getCliente() {
+        ArrayList<clienteBean> clientes = new ArrayList<clienteBean>();
+        String qQuery = "SELECT * FROM clientes ";
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(qQuery);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                clienteBean cliente = new clienteBean();
+                cliente.setIdCliente(rs.getInt("idCliente"));
+                cliente.setNombres(rs.getString("nombres"));
+                cliente.setApellidos(rs.getString("apellidos"));
+                cliente.setIdTipoDucomento(rs.getInt("idTipoDocumento"));
+                cliente.setNumeroIdentificacion(rs.getString("numeroIdentificacion"));
+                cliente.setPassword(rs.getString("password"));
+                cliente.setCiudadResidencia(rs.getString("ciudadResidencia"));
+                cliente.setUltimaActualizacion(rs.getString("ultimaActualizacion"));
+
+                clientes.add(cliente);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(clienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return clientes;
+    }
+
+    public clienteBean getClienteporNumeroDocumento(String numero_Documento) {
         clienteBean cliente = new clienteBean();
-        cliente.setIdCliente(rs.getInt("idCliente"));
-        cliente.setNombres(rs.getString("nombres"));
-        cliente.setApellidos(rs.getString("apellidos"));
-        cliente.setIdTipoDucomento(rs.getInt("idTipoDocumento"));
-        cliente.setNumeroIdentificacion(rs.getString("numeroIdentificacion"));
-        cliente.setPassword(rs.getString("password"));
-        cliente.setCiudadResidencia(rs.getString("ciudadResidencia"));
-        cliente.setUltimaActualizacion(rs.getString("ultimaActualizacion"));
-        
-        clientes.add(cliente);
-      }
-    } catch (SQLException ex) {
-      Logger.getLogger(clienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        String qQuery = "SELECT * FROM clientes WHERE numeroDocumento = ? ";
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(qQuery);
+            pstmt.setString(1, numero_Documento);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                cliente.setIdCliente(rs.getInt("idCliente"));
+                cliente.setNombres(rs.getNString("nombres"));
+                cliente.setApellidos(rs.getNString("apellidos"));
+                cliente.setIdTipoDucomento(rs.getInt("idTipoDocumento"));
+                cliente.setNumeroIdentificacion(rs.getNString("numeroIdentificacion"));
+                cliente.setPassword(rs.getNString("password"));
+                cliente.setCiudadResidencia(rs.getNString("ciudadResidencia"));
+                cliente.setUltimaActualizacion(rs.getNString("ultimaActualizacion"));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(clienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return cliente;
     }
-    return clientes;
-  }    
 }
