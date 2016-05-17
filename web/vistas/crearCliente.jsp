@@ -105,7 +105,7 @@
             <div class="row"> 
                 <br>
                 <fieldset> 
-                    <legend> Datos empleados</legend>
+                    <legend> Creacion de cliente</legend>
 
                     <form class="form-horizontal" role="form" method="post" action="../crearClienteServlet">
                         <div class="row">
@@ -229,7 +229,6 @@
             }
         %>
         <script type="text/javascript">
-
             document.getElementById("nombress").value = "<%=clientes.getNombres()%>";
             document.getElementById("apellidoss").value = "<%=clientes.getApellidos()%>";
             document.getElementById("idTipoDocumento").value = "<%=clientes.getIdTipoDucomento()%>";
