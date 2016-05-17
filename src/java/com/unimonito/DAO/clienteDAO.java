@@ -63,11 +63,10 @@ public class clienteDAO extends IDAO {
                 cliente.setNombres(rs.getString("nombres"));
                 cliente.setApellidos(rs.getString("apellidos"));
                 cliente.setIdTipoDucomento(rs.getInt("idTipoDocumento"));
-                cliente.setNumeroIdentificacion(rs.getString("numeroIdentificacion"));
+                cliente.setNumeroIdentificacion(rs.getString("numeroDocumento"));
                 cliente.setPassword(rs.getString("password"));
                 cliente.setCiudadResidencia(rs.getString("ciudadResidencia"));
                 cliente.setUltimaActualizacion(rs.getString("ultimaActualizacion"));
-
                 clientes.add(cliente);
             }
         } catch (SQLException ex) {

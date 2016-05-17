@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ConsultarClienteServlet", urlPatterns = {"/ConsultarClienteServlet"})
 public class ConsultarClienteServlet extends HttpServlet {
     
-    private String numeroDocumento;
+    private String numero_id;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,7 +32,7 @@ public class ConsultarClienteServlet extends HttpServlet {
        PrintWriter out = response.getWriter(); 
              try {
                  String mensaje = "se encontro el cliente";
-                 response.sendRedirect("vistas/crearCliente.jsp?id=" + numeroDocumento);
+                 response.sendRedirect("vistas/crearCliente.jsp?id=" + numero_id);
              }finally{
                  out.close();
              }
@@ -65,7 +65,7 @@ public class ConsultarClienteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        numeroDocumento = request.getParameter("numeroDocumento");
+        numero_id = request.getParameter("numeroDocumento");
         processRequest(request, response);
     }
 

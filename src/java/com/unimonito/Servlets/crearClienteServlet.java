@@ -82,7 +82,7 @@ public class crearClienteServlet extends HttpServlet {
             cliente.setNombres(request.getParameter("nombres"));
             cliente.setApellidos(request.getParameter("apellidos"));
             cliente.setIdTipoDucomento(Integer.parseInt(request.getParameter("idTipoDocumento")));
-            cliente.setNumeroIdentificacion(request.getParameter("numeroIdentificacion"));
+            cliente.setNumeroIdentificacion(request.getParameter("numeroDocumento"));
             cliente.setPassword(request.getParameter("password"));
             cliente.setCiudadResidencia(request.getParameter("ciudadResidencia"));
             cliente.setUltimaActualizacion(request.getParameter("ultimaActualizacion"));

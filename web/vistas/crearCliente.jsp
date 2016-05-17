@@ -143,10 +143,10 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="numero_Identificacion" class="col-lg-3 control-label">N° documento</label>
+                                    <label for="numero_Documento" class="col-lg-3 control-label">N° documento</label>
                                     <div class="col-lg-9">
-                                        <input type="text" class="form-control" id="numero_Identificacion"
-                                               placeholder="1231231233" name="numeroIdentificacion">
+                                        <input type="text" class="form-control" id="numero_Documento"
+                                               placeholder="1231231233" name="numeroDocumento">
                                     </div>
                                 </div>
                             </div>
@@ -233,7 +233,7 @@
             document.getElementById("nombress").value = "<%=clientes.getNombres()%>";
             document.getElementById("apellidoss").value = "<%=clientes.getApellidos()%>";
             document.getElementById("idTipoDocumento").value = "<%=clientes.getIdTipoDucomento()%>";
-            document.getElementById("numero_Identificacion").value = "<%=clientes.getNumeroIdentificacion()%>";
+            document.getElementById("numero_Documento").value = "<%=clientes.getNumeroIdentificacion()%>";
             document.getElementById("contrasena").value = "<%=clientes.getPassword()%>";
             document.getElementById("ciudad_residencia").value = "<%=clientes.getCiudadResidencia()%>";
             document.getElementById("ultima_Actualizacion").value = "<%=clientes.getUltimaActualizacion()%>";
