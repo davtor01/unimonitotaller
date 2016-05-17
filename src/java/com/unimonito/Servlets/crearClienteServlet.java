@@ -7,7 +7,6 @@ package com.unimonito.Servlets;
 
 import com.unimonito.Beans.clienteBean;
 import com.unimonito.DAO.clienteDAO;
-import com.unimonito.DAO.empleadoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -77,7 +76,7 @@ public class crearClienteServlet extends HttpServlet {
             throws ServletException, IOException {
        // processRequest(request, response);
         try{
-            clienteDAO miCliente = new clienteDAO();
+            clienteDAO clientedao = new clienteDAO();
             //cliente.setIdCliente(Integer.parseInt(request.getParameter("idCliente")));
             cliente.setNombres(request.getParameter("nombres"));
             cliente.setApellidos(request.getParameter("apellidos"));
@@ -88,7 +87,7 @@ public class crearClienteServlet extends HttpServlet {
             cliente.setUltimaActualizacion(request.getParameter("ultimaActualizacion"));
            
             
-            miCliente.guardar(cliente);
+            clientedao.guardar(cliente);
             processRequest(request, response);
              
         } catch (SQLException ex) {

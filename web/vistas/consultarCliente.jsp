@@ -65,7 +65,7 @@
                             <div class="col-xs-6">
                                 <label for="numero_Documento" class="col-lg-5 control-label">Numero ID</label>
                                 <div class="col-lg-7">
-                                    <input type="text" class="form-control" id="numero_Documento"
+                                    <input type="text" class="form-control" id="numeroDocumento"
                                            placeholder="123" name="numeroDocumento">
                                 </div>
                             </div>
