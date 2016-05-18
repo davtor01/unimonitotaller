@@ -1,8 +1,5 @@
 <%-- 
-    Document   : creacionClientes
-    Created on : 26/08/2014, 02:51:33 PM
-    Author     : Administrador
-
+  
 <%@page import="com.unimonito.Beans.ClienteBean"%>
 <%@page import="com.unimonito.DAO.ClientesDAO"%>
 

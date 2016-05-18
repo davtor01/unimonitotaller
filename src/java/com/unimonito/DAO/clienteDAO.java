@@ -98,4 +98,21 @@ public class clienteDAO extends IDAO {
         }
         return cliente;
     }
+
+    public boolean borrar(int idCliente) {
+        boolean bandera = true;
+        String qQuery = "DELETE FROM clientes WHERE idCliente = ? ";
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(qQuery);
+            pstmt.setInt(1, idCliente);
+            int resultado = pstmt.executeUpdate();
+            System.out.println("Entro a borrar debio borrar...");
+            if (resultado == 0) {
+                bandera = false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(clienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return bandera;
+    }
 }
