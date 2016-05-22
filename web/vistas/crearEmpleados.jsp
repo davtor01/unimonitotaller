@@ -158,7 +158,7 @@
                             </div>
                         </div>
                     </div> 
-                    <div class="col-md-4">
+                    <!--<div class="col-md-4">
                         <div class="form-group">
                             <label for="ultima_Actualizacion" class="col-lg-5 control-label">Ultima Actualizacion</label>
                             <div class="col-lg-7">
@@ -166,7 +166,7 @@
                                        placeholder="aaaa-mm-dd" name="ultimaActualizacion">
                             </div>
                         </div>
-                    </div> 
+                    </div> -->
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="codigo_Taller" class="col-lg-5 control-label">codigo Taller</label>

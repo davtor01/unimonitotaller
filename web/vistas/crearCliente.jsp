@@ -190,7 +190,7 @@
                                 </div>
                             </div> 
 
-
+<!--
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="ultima_Actualizacion" class="col-lg-5 control-label">Ultima Actualizacion</label>
@@ -200,7 +200,7 @@
                                     </div>
                                 </div>
                             </div> 
-
+-->
                             <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">
                                     <button type="submit" class="btn btn-default" id="aceptar">Aceptar</button>

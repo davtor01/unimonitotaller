@@ -5,6 +5,9 @@
  */
 package com.unimonito.Beans;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author DAVID
@@ -42,10 +45,15 @@ public class clienteBean extends personaBean{
     }
 
     public String getUltimaActualizacion() {
-        return ultimaActualizacion;
+        
+       Date ahora = new Date();
+        SimpleDateFormat ultimaActualizacion = new SimpleDateFormat("yyyy-MM-dd");
+        return ultimaActualizacion.format(ahora);
+       // return ultimaActualizacion;
     }
 
     public void setUltimaActualizacion(String ultimaActualizacion) {
+        
         this.ultimaActualizacion = ultimaActualizacion;
     }
     
