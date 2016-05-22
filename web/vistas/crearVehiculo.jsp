@@ -1,15 +1,13 @@
-<%-- 
-    Document   : creacionClientes
-    Created on : 26/08/2014, 02:51:33 PM
-    Author     : Administrador
 
-<%@page import="com.unimonito.Beans.ClienteBean"%>
-<%@page import="com.unimonito.DAO.ClientesDAO"%>
+<%@page import="com.unimonito.Beans.vehiculoBean" %>
+<%@page import="com.unimonito.DAO.vehiculoDAO" %>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>calendario
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>calendario
---%>
-
+<%
+    String respuesta = request.getParameter("respuesta") == null ? "" : request.getParameter("respuesta");
+    String vehiculo = request.getParameter("vehiculo") == null ? "" : request.getParameter("empleado");
+    String mensaje = request.getParameter("mensaje") == null ? "" : request.getParameter("mensaje");
+    String id = request.getParameter("id") == null ? "" : request.getParameter("id");
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -76,7 +74,7 @@
                         <div class="form-group">
                             <label for="matricula_" class="col-lg-3 control-label">Matricula</label>
                             <div class="col-lg-9">
-                                <input type="text" class="form-control" id="matricula_"
+                                <input type="text" class="form-control" id="matriculaa"
                                        placeholder="WVM123" name="matricula">
                             </div>
                         </div>
@@ -149,11 +147,35 @@
                 </div> 
             </form>
         </fieldset>
-        <script type="text/javascript">
+       <!-- <script type="text/javascript">
             $(function () {
                 $('#datetimepicker1').datetimepicker();
             });
         </script>
+        -->
+        
+             <%
+    if (id != ""){
+        vehiculoDAO vehiculodao = new vehiculoDAO();
+        vehiculoBean vehiculos = vehiculodao.getVehiculoPorMatrcicula(id);
+        if (vehiculos == null){
+        %>
+        <script type="text/javascript">
+        alert("no se encontro el empleado");
+        </script>
+    <%
+        }
+    %>
+     <script type="text/javascript">
+         document.getElementById("matriculaa").value = "<%=vehiculos.getMatricula()%>";
+         document.getElementById("fechade_Compra").value = "<%=vehiculos.getFechadeCompra()%>";
+         document.getSelection("numeroPod").value = "<%=vehiculos.getNumeroPod() %>";
+         document.getElementById("idTipo").value = "<%=vehiculos.getTipoVehiculo()%>";
+         $("#aceptar").hide();
+        </script>
+    <%
+        }
+    %>
     </div>
 </div>
 

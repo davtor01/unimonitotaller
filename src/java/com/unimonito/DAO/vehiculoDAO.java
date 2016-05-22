@@ -56,7 +56,6 @@ public class vehiculoDAO extends IDAO {
                 vehiculo.setFechadeCompra(rs.getString("fechadeCompra"));
                 vehiculo.setTipoVehiculo(rs.getString("numeroPod"));
                 vehiculo.setIdTipo(rs.getInt("idTipo"));
-                
 
                 vehiculos.add(vehiculo);
             }
@@ -64,5 +63,26 @@ public class vehiculoDAO extends IDAO {
             Logger.getLogger(vehiculoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return vehiculos;
+    }
+
+    public vehiculoBean getVehiculoPorMatrcicula(String idmatrcula) {
+        vehiculoBean mivehiculo = new vehiculoBean();
+        String qQuery = "SELECT * FROM vehiculos WHERE matricula = ? ";
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(qQuery);
+            pstmt.setString(1, idmatrcula);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                mivehiculo.setMatricula(rs.getNString("matricula"));
+                mivehiculo.setFechadeCompra(rs.getNString("fechadeCompra"));
+                mivehiculo.setTipoVehiculo(rs.getNString("numeroPod"));
+                mivehiculo.setIdTipo(rs.getInt("idTipo"));
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(empleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+        return mivehiculo;
     }
 }
