@@ -75,7 +75,7 @@ public class vehiculoDAO extends IDAO {
             while (rs.next()) {
                 mivehiculo.setMatricula(rs.getNString("matricula"));
                 mivehiculo.setFechadeCompra(rs.getNString("fechadeCompra"));
-                mivehiculo.setTipoVehiculo(rs.getNString("numeroPod"));
+                mivehiculo.setTipoVehiculo(rs.getString("numeroPod"));
                 mivehiculo.setIdTipo(rs.getInt("idTipo"));
 
             }
