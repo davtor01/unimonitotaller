@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.unimonito.Servlets;
 
 import java.io.IOException;
@@ -12,11 +17,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author DAVID
  */
-@WebServlet(name = "ConsultarClienteServlet", urlPatterns = {"/ConsultarClienteServlet"})
-public class ConsultarClienteServlet extends HttpServlet {
-    
-    private String numero_id;
-
+@WebServlet(name = "consultarEmpleadoServlet", urlPatterns = {"/consultarEmpleadoServlet"})
+public class consultarEmpleadoServlet extends HttpServlet {
+ private String numero_id;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -29,14 +32,13 @@ public class ConsultarClienteServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       PrintWriter out = response.getWriter(); 
-             try {
-                 String mensaje = "se encontro el cliente";
-                 response.sendRedirect("vistas/crearCliente.jsp?id=" + numero_id);
-             }finally{
-                 out.close();
-             }
-        
+        PrintWriter out = response.getWriter();
+    try {
+      String mensaje = "secreo con exito el producto";
+      response.sendRedirect("vistas/crearEmpleados.jsp?id=" + numero_id);
+    } finally {
+      out.close();
+    }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -65,7 +67,7 @@ public class ConsultarClienteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        numero_id = request.getParameter("numeroDocumento");
+        numero_id = request.getParameter("numeroIdentificacion");
         processRequest(request, response);
     }
 

@@ -1,5 +1,5 @@
 <%-- 
-    Document   : consultarCliente
+    Document   : consultarEmpleados
     Created on : 22/05/2016, 10:18:55 AM
     Author     : DAVID
 --%>
@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Consulta de clientes</title>
+    <title>Consulta de empleados</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -60,7 +60,7 @@
         <fieldset>       
           <legend>Consulta</legend>
           <label> Digite su documento de identificacion</label>
-          <form class="form-horizontal" role="form" action="../ConsultarClienteServlet" method="post">
+          <form class="form-horizontal" role="form" action="../consultarEmpleadoServlet" method="post">
             <div class="form-group">
               <div class="col-xs-6">
                 <label for="numero_id" class="col-lg-5 control-label">N° documento</label>

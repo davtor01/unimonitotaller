@@ -75,28 +75,28 @@ public class clienteDAO extends IDAO {
         return clientes;
     }
 
-    public clienteBean getClienteporNumeroDocumento(String numero_Documento) {
-        clienteBean cliente = new clienteBean();
+    public clienteBean getClienteporNumeroDocumento(String numeroDoc) {
+        clienteBean miCliente = new clienteBean();
         String qQuery = "SELECT * FROM clientes WHERE numeroDocumento = ? ";
         try {
             PreparedStatement pstmt = conn.prepareStatement(qQuery);
-            pstmt.setString(1, numero_Documento);
+            pstmt.setString(1, numeroDoc);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                cliente.setIdCliente(rs.getInt("idCliente"));
-                cliente.setNombres(rs.getNString("nombres"));
-                cliente.setApellidos(rs.getNString("apellidos"));
-                cliente.setIdTipoDucomento(rs.getInt("idTipoDocumento"));
-                cliente.setNumeroIdentificacion(rs.getNString("numeroIdentificacion"));
-                cliente.setPassword(rs.getNString("password"));
-                cliente.setCiudadResidencia(rs.getNString("ciudadResidencia"));
-                cliente.setUltimaActualizacion(rs.getNString("ultimaActualizacion"));
+                miCliente.setIdCliente(rs.getInt("idCliente"));
+                miCliente.setNombres(rs.getNString("nombres"));
+                miCliente.setApellidos(rs.getNString("apellidos"));
+                miCliente.setIdTipoDucomento(rs.getInt("idTipoDocumento"));
+                miCliente.setNumeroIdentificacion(rs.getNString("numeroDocumento"));
+                miCliente.setPassword(rs.getNString("password"));
+                miCliente.setCiudadResidencia(rs.getNString("ciudadResidencia"));
+                miCliente.setUltimaActualizacion(rs.getNString("ultimaActualizacion"));
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(clienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return cliente;
+        return miCliente;
     }
 
     public boolean borrar(int idCliente) {

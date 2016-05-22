@@ -6,6 +6,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>calendario
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>calendario
 --%>
+<%@page import="com.unimonito.Beans.empleadoBean" %>
+<%@page import="com.unimonito.DAO.empleadoDAO" %>
+
+<%
+    String respuesta = request.getParameter("respuesta") == null ? "" : request.getParameter("respuesta");
+    String empleado = request.getParameter("empleado") == null ? "" : request.getParameter("empleado");
+    String mensaje = request.getParameter("mensaje") == null ? "" : request.getParameter("mensaje");
+    String id = request.getParameter("id") == null ? "" : request.getParameter("id");
+%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -196,11 +205,38 @@
                 </div> 
             </form>
         </fieldset>
-        <script type="text/javascript">
+       <!-- <script type="text/javascript">
             $(function () {
                 $('#datetimepicker1').datetimepicker();
             });
+        </script>-->
+       <%
+    if (id != ""){
+        empleadoDAO empleadodao = new empleadoDAO();
+        empleadoBean empleados = empleadodao.getEmpleadoPorDocumento(id);
+        if (empleados == null){
+        %>
+        <script type="text/javascript">
+        alert("no se encontro el empleado");
         </script>
+    <%
+        }
+    %>
+     <script type="text/javascript">
+         document.getElementById("nombress").value = "<%=empleados.getNombres()%>";
+         document.getElementById("apellidoss").value = "<%=empleados.getApellidos()%>";
+         document.getElementById("numero_Identificacion").value = "<%=empleados.getNumeroIdentificacion()%>";
+         document.getElementById("contrasena").value = "<%=empleados.getPassword()%>";
+         document.getElementById("fecha_InicioContrato").value = "<%=empleados.getFechaInicioContrato()%>";
+         document.getElementById("salarioo").value = "<%=empleados.getSalario()%>";
+         document.getElementById("estado").value = "<%=empleados.getEstado()%>";
+         document.getElementById("codigo_Taller").value = "<%=empleados.getCodigoTaller()%>";
+         document.getElementById("numero_Telefono").value = "<%=empleados.getNumeroTelefono()%>";
+         $("#aceptar").hide();
+        </script>
+    <%
+        }
+    %>
     </div>
 </div>
 
