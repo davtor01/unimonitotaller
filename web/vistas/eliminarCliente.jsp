@@ -76,11 +76,11 @@
 
       <!-- Marketing Icons Section -->
       <div class="row">
-        <form class="form-horizontal" role="form" action="../elimiarClienteServlet" method="post">
+        <form class="form-horizontal" role="form" action="../eliminacionClienteServlet" method="post">
           <br>
           <fieldset>
             <legend>Eliminacion de Clientes</legend>
-            <input type="text" name="clientesSeleccionados" id="clientesSeleccionados">
+            <input type="text" name="clientesSeleccionados" id="eliminacionClienteServlet">
             <table class="table table-hover" cellspacing="0" width="100%" id="datatable">
               <thead>
                 <tr>
