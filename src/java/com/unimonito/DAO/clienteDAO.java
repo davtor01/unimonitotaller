@@ -79,11 +79,11 @@ public class clienteDAO extends IDAO {
         clienteBean miCliente = new clienteBean();
         String qQuery = "SELECT * FROM clientes WHERE numeroDocumento = ? ";
         try {
-            PreparedStatement pstmt = conn.prepareStatement(qQuery);
+             PreparedStatement pstmt = conn.prepareStatement(qQuery);
             pstmt.setString(1, numeroDoc);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                miCliente.setIdCliente(rs.getInt("idCliente"));
+               // miCliente.setIdCliente(rs.getInt("idCliente"));
                 miCliente.setNombres(rs.getNString("nombres"));
                 miCliente.setApellidos(rs.getNString("apellidos"));
                 miCliente.setIdTipoDucomento(rs.getInt("idTipoDocumento"));

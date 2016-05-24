@@ -1,7 +1,17 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.unimonito.Servlets;
 
+import com.unimonito.Beans.vehiculoBean;
+import com.unimonito.DAO.vehiculoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,11 +22,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author DAVID
  */
-@WebServlet(name = "ConsultarClienteServlet", urlPatterns = {"/ConsultarClienteServlet"})
-public class ConsultarClienteServlet extends HttpServlet {
-
-    private String numero_id;
-
+@WebServlet(name = "vehiculosPorClientesServlet", urlPatterns = {"/vehiculosPorClientesServlet"})
+public class vehiculosPorClientesServlet extends HttpServlet {
+  private vehiculoBean vehiculoxcliente = new vehiculoBean();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -27,13 +35,12 @@ public class ConsultarClienteServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+            throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        try {
-            String mensaje = "secreo con exito el producto";
-            response.sendRedirect("vistas/crearCliente.jsp?id=" + numero_id);
-        } finally {
+        try{
+           String mensaje = "se creo exitosamente el vehiculo";
+        response.sendRedirect("vistas/crearVehiculo.jsp?respuesta=si&vehiculo=" + vehiculoxcliente.getMatricula()+ "&mensaje=" + mensaje);
+        }finally{
             out.close();
         }
     }
@@ -64,10 +71,21 @@ public class ConsultarClienteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        numero_id = request.getParameter("numeroDocumento");
-        processRequest(request, response);
+        try {
+          
+            vehiculoDAO miVehiculo = new vehiculoDAO();
+            
+            
+            vehiculoxcliente.setMatricula(request.getParameter("matricula"));
+            vehiculoxcliente.setNumeroDocumento(request.getParameter("numeroDocumento"));
+            
+            miVehiculo.asignarVehiculoaPersona(vehiculoxcliente);
+            
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(crearVehiculoServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-
     /**
      * Returns a short description of the servlet.
      *

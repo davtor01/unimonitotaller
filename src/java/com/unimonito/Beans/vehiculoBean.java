@@ -18,9 +18,9 @@ public class vehiculoBean {
 
     }
 
-    public vehiculoBean(int idvehiculos, String numeroDocumento) {
+    public vehiculoBean(String matricula, String numeroDocumento) {
         
-        this.idvehiculos = idvehiculos;
+        this.matricula = matricula;
         this.numeroDocumento = numeroDocumento;
     }
 

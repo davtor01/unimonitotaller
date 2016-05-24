@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.unimonito.DAO;
 
 import com.unimonito.Conexion.conexionBD;
@@ -92,7 +87,7 @@ public class empleadoDAO extends IDAO {
                 miempleado.setIdTipoDucomento(rs.getInt("idTipoDocumento"));
                 miempleado.setNumeroIdentificacion(rs.getNString("numeroIdentificacion"));
                 miempleado.setPassword(rs.getNString("password"));
-                miempleado.setFechaInicioContrato(rs.getNString("fechaInicioContrato"));
+                miempleado.setFechaInicioContrato(rs.getString("fechaInicioContrato"));
                 miempleado.setSalario(rs.getNString("salario"));
                 miempleado.setEstado(rs.getInt("estado"));
                 miempleado.setUltimaActualizacion(rs.getNString("ultimaActualizacion"));

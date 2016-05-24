@@ -1,28 +1,19 @@
-<%-- 
-    Document   : creacionClientes
-    Created on : 26/08/2014, 02:51:33 PM
-    Author     : Administrador
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>calendario
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>calendario
---%>
-<%@page import="com.unimonito.Beans.clienteBean"%>
-<%@page import="com.unimonito.DAO.clienteDAO"%>
+<%@page import="com.unimonito.Beans.clienteBean" %>
+<%@page import="com.unimonito.DAO.clienteDAO" %>
+
 <%
     String respuesta = request.getParameter("respuesta") == null ? "" : request.getParameter("respuesta");
-    String cliente = request.getParameter("cliente") == null ? "" : request.getParameter("cliente");
+    String empleado = request.getParameter("empleado") == null ? "" : request.getParameter("empleado");
     String mensaje = request.getParameter("mensaje") == null ? "" : request.getParameter("mensaje");
     String id = request.getParameter("id") == null ? "" : request.getParameter("id");
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
-
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"><%--calensaio--%>
-
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -53,7 +44,6 @@
         <!-- Bootstrap Core JavaScript -->
         <script src="../js/bootstrap.min.js"></script>
         <script type="text/javascript" src="../js/menu.js"></script>
-
         <style type="text/css">
             div.growlUI { background: url(../imagenes/check48.png) no-repeat 10px 10px}
             div.growlUI h1, div.growlUI h2 {
@@ -63,17 +53,15 @@
                 font: 200% sans-serif; 
             }
         </style>
-     
     </head>
 
-    <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container" id="cabecera">
-            </div>
-            <!-- /.container -->
-        </nav>
-        <!-- Page Content -->
-        <div class="container">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container" id="cabecera">
+        </div>
+        <!-- /.container -->
+    </nav>
+    <div class="container">
             <div class="row"> 
                 <br>
                 <fieldset> 
@@ -186,32 +174,34 @@
                         $('#datetimepicker1').datetimepicker();
                     });
                 </script>-->
-            </div>
+            <%
+                if (id != "") {
+                    clienteDAO clientedao = new clienteDAO();
+                    clienteBean clientes = clientedao.getClienteporNumeroDocumento(id);
+                    if (clientes == null) {
+            %>
+            <script type="text/javascript">
+                alert("no se encontro el cliente");
+            </script>
+            <%
+                }
+            %>
+            <script type="text/javascript">
+                document.getElementById("nombress").value = "<%=clientes.getNombres()%>";
+                document.getElementById("apellidoss").value = "<%=clientes.getApellidos()%>";
+                document.getElementById("idTipoDocumento").value = "<%=clientes.getIdTipoDucomento()%>";
+                document.getElementById("numero_Documento").value = "<%=clientes.getNumeroIdentificacion()%>";
+                document.getElementById("contrasena").value = "<%=clientes.getPassword()%>";
+                document.getElementById("ciudad_residencia").value = "<%=clientes.getCiudadResidencia()%>";
+                document.getElementById("ultima_Actualizacion").value = "<%=clientes.getUltimaActualizacion()%>";
+                $("#aceptar").hide();
+            </script>
+            <%
+                }
+            %>
         </div>
-        <%
-            if (id != "") {
-                clienteDAO clientesdao = new clienteDAO();
-                clienteBean clientes = clientesdao.getClienteporNumeroDocumento(id);
-                if (clientes == null) {
-        %>
-        <script type="text/javascript">
-            alert("No se encontro el cliente");
-        </script>
-        <%
-            }
-        %>
-        <script type="text/javascript">
-            document.getElementById("nombress").value = "<%=clientes.getNombres()%>";
-            document.getElementById("apellidoss").value = "<%=clientes.getApellidos()%>";
-            document.getElementById("idTipoDocumento").value = "<%=clientes.getIdTipoDucomento()%>";
-            document.getElementById("numero_Documento").value = "<%=clientes.getNumeroIdentificacion()%>";
-            document.getElementById("contrasena").value = "<%=clientes.getPassword()%>";
-            document.getElementById("ciudad_residencia").value = "<%=clientes.getCiudadResidencia()%>";
-            document.getElementById("ultima_Actualizacion").value = "<%=clientes.getUltimaActualizacion()%>";
-            $("#aceptar").hide();
-        </script>
-        <%
-            }
-        %>
-    </body>
+    </div>
+
 </html>
+
+

@@ -85,4 +85,21 @@ public class vehiculoDAO extends IDAO {
         }
         return mivehiculo;
     }
+        public boolean asignarVehiculoaPersona(vehiculoBean vehiculo) {
+        String qVehiculos = "INSERT INTO vehiculos_has_clientes(idvehiculos, id, idCliente) VALUES (?,NULL,?)";
+        Statement ps = null;
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(qVehiculos);
+
+            pstmt.setString(1, vehiculo.getMatricula());
+            pstmt.setString(2, vehiculo.getNumeroDocumento());
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+        }
+        return true;
+    }
+
 }
